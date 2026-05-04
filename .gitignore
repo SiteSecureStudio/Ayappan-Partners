@@ -1,0 +1,7 @@
+node_modules/
+temporary screenshots/
+temp_docx/
+screenshot-viewport.mjs
+screenshot-scroll.mjs
+screenshot-full-reveal.mjs
+package-lock.json

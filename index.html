@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayappan &amp; Partners — Advocates &amp; Solicitors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Design System ─── */
+    :root {
+      --black:    #07090c;
+      --dark:     #0c0f14;
+      --surface:  #111620;
+      --elevated: #1a2130;
+      --border:   rgba(0, 200, 230, 0.12);
+      --cyan:     #00c8e8;
+      --cyan-dim: #0099b8;
+      --steel:    #8daab8;
+      --steel-dim:#6a8898;
+      --white:    #eef2f6;
+      --muted:    #8fa4b5;
+      --gold:     #c8aa72;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'Lato', system-ui, sans-serif;
+      --font-sub:     'Cormorant Garamond', Georgia, serif;
+
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ─── Noise Texture Overlay ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ─── Navigation ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4rem;
+      height: 80px;
+      background: linear-gradient(to bottom, rgba(7,9,12,0.95) 0%, rgba(7,9,12,0) 100%);
+      transition: background 0.4s ease, backdrop-filter 0.4s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(7, 9, 12, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .nav-logo img.emblem {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      opacity: 0.92;
+      transition: opacity 0.3s ease;
+    }
+
+    .nav-logo .wordmark-text {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cyan);
+      letter-spacing: 0.01em;
+      opacity: 0.92;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .nav-cta {
+      display: inline-block;
+      padding: 9px 22px;
+      border: 1px solid rgba(0, 200, 230, 0.35);
+      color: var(--cyan) !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.14em !important;
+      border-radius: 2px;
+      transition: background 0.25s ease, border-color 0.25s ease !important;
+    }
+
+    .nav-cta:hover {
+      background: rgba(0, 200, 230, 0.1) !important;
+      border-color: var(--cyan) !important;
+      color: var(--cyan) !important;
+    }
+
+    /* ─── Hero ─── */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 2rem 80px;
+      overflow: hidden;
+    }
+
+    /* Radial gradient background layers */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 30%, rgba(0, 140, 200, 0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 70%, rgba(0, 80, 120, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(141, 170, 184, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Subtle horizontal scan line */
+    #hero::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0, 200, 230, 0.07), rgba(0, 200, 230, 0.15), rgba(0, 200, 230, 0.07), transparent);
+      pointer-events: none;
+    }
+
+    .hero-emblem {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: scale(0.85);
+      animation: fadeUp 1s var(--ease-out) 0.2s forwards;
+      box-shadow:
+        0 0 0 1px rgba(0, 200, 230, 0.15),
+        0 0 40px rgba(0, 200, 230, 0.08),
+        0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s var(--ease-out) 0.4s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 6vw, 5.8rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s var(--ease-out) 0.55s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--steel);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-sub);
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--steel);
+      letter-spacing: 0.04em;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s var(--ease-out) 0.7s forwards;
+    }
+
+    .hero-motto {
+      font-family: var(--font-sub);
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--muted);
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s var(--ease-out) 0.85s forwards;
+    }
+
+    .hero-motto::before { content: '\201C'; color: var(--cyan); font-size: 1.6rem; line-height: 0; vertical-align: -0.4em; margin-right: 4px; }
+    .hero-motto::after  { content: '\201D'; color: var(--cyan); font-size: 1.6rem; line-height: 0; vertical-align: -0.4em; margin-left: 4px; }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.9s var(--ease-out) 1s forwards;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--cyan);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: transform 0.2s var(--ease-spring), box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 4px 24px rgba(0, 200, 230, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #20d8f0;
+      box-shadow: 0 8px 32px rgba(0, 200, 230, 0.35);
+    }
+
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 14px 36px;
+      border: 1px solid rgba(141, 170, 184, 0.3);
+      color: var(--steel);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s var(--ease-spring);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--steel);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ─── Section Layout ─── */
+    section {
+      padding: 7rem 4rem;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .section-full {
+      max-width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--cyan);
+      opacity: 0.5;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-heading em {
+      font-style: italic;
+      color: var(--steel);
+    }
+
+    /* ─── Divider ─── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+      margin: 0 4rem;
+      max-width: calc(100% - 8rem);
+    }
+
+    /* ─── About Section ─── */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 0.97rem;
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-text p strong {
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      padding: 2rem 1.75rem;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.25s ease;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--cyan), transparent);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .stat-card:hover { border-color: rgba(0, 200, 230, 0.3); }
+    .stat-card:hover::before { opacity: 1; }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--cyan);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ─── Practice Areas ─── */
+    #practice {
+      background: var(--dark);
+      max-width: 100%;
+      padding: 7rem 4rem;
+    }
+
+    #practice .inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      margin-top: 3.5rem;
+    }
+
+    .practice-card {
+      background: var(--surface);
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease-spring);
+    }
+
+    .practice-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--cyan);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s var(--ease-out);
+    }
+
+    .practice-card:hover {
+      background: var(--elevated);
+      border-color: rgba(0, 200, 230, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .practice-card:hover::after { transform: scaleX(1); }
+
+    .practice-icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 1.5rem;
+      opacity: 0.7;
+    }
+
+    .practice-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.01em;
+    }
+
+    .practice-card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .practice-card ul {
+      list-style: none;
+      margin-top: 0.8rem;
+    }
+
+    .practice-card ul li {
+      font-size: 0.8rem;
+      color: var(--steel-dim);
+      padding: 0.25rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .practice-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--cyan);
+      font-size: 0.65rem;
+      opacity: 0.6;
+    }
+
+    /* ─── Counsel Profile ─── */
+    #counsel {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .counsel-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .counsel-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 60px;
+      background: var(--cyan);
+    }
+
+    .counsel-monogram {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 0 1px rgba(0,200,230,0.2);
+    }
+
+    .counsel-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .counsel-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 1.5rem;
+    }
+
+    .counsel-meta {
+      list-style: none;
+      border-top: 1px solid var(--border);
+      padding-top: 1.2rem;
+    }
+
+    .counsel-meta li {
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      gap: 0.6rem;
+    }
+
+    .counsel-meta li span:first-child {
+      color: var(--steel-dim);
+      min-width: 70px;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+    }
+
+    .counsel-bio p {
+      font-size: 0.96rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .counsel-bio p strong {
+      color: var(--white);
+      font-weight: 400;
+    }
+
+    .qualifications {
+      margin-top: 2rem;
+    }
+
+    .qualifications h4 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .qual-list {
+      list-style: none;
+    }
+
+    .qual-list li {
+      font-size: 0.83rem;
+      color: var(--muted);
+      padding: 0.55rem 0;
+      padding-left: 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .qual-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1.1rem;
+      width: 5px;
+      height: 1px;
+      background: var(--cyan);
+    }
+
+    /* ─── Notable Cases ─── */
+    #cases {
+      background: var(--dark);
+      max-width: 100%;
+      padding: 7rem 4rem;
+    }
+
+    #cases .inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .cases-list {
+      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .case-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 2rem;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .case-item:hover {
+      background: var(--elevated);
+      border-color: rgba(0, 200, 230, 0.2);
+    }
+
+    .case-name {
+      font-family: var(--font-sub);
+      font-style: italic;
+      font-size: 0.97rem;
+      color: var(--white);
+      line-height: 1.4;
+    }
+
+    .case-badge {
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: rgba(0, 200, 230, 0.08);
+      border: 1px solid rgba(0, 200, 230, 0.2);
+      padding: 4px 12px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    /* ─── Contact ─── */
+    #contact {
+      padding: 7rem 0;
+      max-width: 100%;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      margin-top: 3.5rem;
+    }
+
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-detail {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.6rem;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .contact-detail-text {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .contact-detail-text strong {
+      display: block;
+      color: var(--white);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+      font-weight: 400;
+    }
+
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+    }
+
+    .contact-form h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 1.8rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--elevated);
+      border: 1px solid var(--border);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.87rem;
+      font-weight: 300;
+      padding: 12px 14px;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s ease;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--cyan);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--steel-dim); }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-group select { cursor: pointer; }
+    .form-group select option { background: var(--surface); }
+
+    /* ─── Footer ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-logo img.emblem { width: 34px; height: 34px; border-radius: 50%; opacity: 0.7; }
+    .footer-logo .wordmark-text { font-family: var(--font-display); font-size: 0.9rem; font-style: italic; color: var(--steel-dim); }
+
+    .footer-text {
+      font-size: 0.75rem;
+      color: var(--steel-dim);
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--steel-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover { color: var(--cyan); }
+
+    /* ─── Animations ─── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Horizontal rule accent ─── */
+    .hr-accent {
+      border: none;
+      height: 1px;
+      background: linear-gradient(to right, var(--cyan), transparent);
+      width: 80px;
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 1024px) {
+      nav { padding: 0 2rem; }
+      section { padding: 5rem 2rem; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      #counsel { grid-template-columns: 1fr; gap: 2.5rem; }
+      .practice-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .practice-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      #practice { padding: 5rem 2rem; }
+      #cases { padding: 5rem 2rem; }
+      #contact { padding: 5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Navigation ─── -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">
+      <img src="brand-assets/WhatsApp Image 2026-05-03 at 17.50.15.jpeg" alt="Ayappan & Partners emblem" class="emblem" />
+      <span class="wordmark-text">Ayappan &amp; Partners</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#counsel">Counsel</a></li>
+      <li><a href="#cases">Cases</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <!-- ─── Hero ─── -->
+  <section id="hero" class="section-full">
+    <img src="brand-assets/WhatsApp Image 2026-05-03 at 17.50.15.jpeg" alt="Ayappan & Partners" class="hero-emblem" />
+    <p class="hero-eyebrow">Advocates &amp; Solicitors &nbsp;·&nbsp; Kuala Lumpur &nbsp;·&nbsp; Est. 2009</p>
+    <h1 class="hero-title">Ayappan<br /><em>&amp; Partners</em></h1>
+    <p class="hero-subtitle">Excellence in Law. Committed to Results.</p>
+    <p class="hero-motto">Tell us your legal problems, we give you the solutions</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Consult Us</a>
+      <a href="#practice" class="btn-outline">Our Practice Areas</a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── About ─── -->
+  <section id="about">
+    <div class="about-text reveal">
+      <p class="section-label">Introduction</p>
+      <h2 class="section-heading">A Firm Built on<br /><em>Trust &amp; Precision</em></h2>
+      <hr class="hr-accent" />
+      <p>
+        <strong>Ayappan &amp; Partners</strong> (formerly known as Messrs. Rajan, Gurjit &amp; Associates) was established in 2009 and is located in the heart of <strong>Sentul, Kuala Lumpur</strong> — a fast-developing business hub.
+      </p>
+      <p>
+        Our experience and expertise include handling civil &amp; criminal litigation, professional negligence, corporate &amp; commercial litigation, insurance litigation, drug-related offences, and other criminal matters — in courts at all levels, including appellate courts.
+      </p>
+      <p>
+        We represent both corporate and individual clients, providing litigation expertise and undertaking transactional work across a broad spectrum of the law. Our firm's primary objective is to deliver <strong>top-quality, professional legal services</strong> that are reliable, responsive, and cost-effective.
+      </p>
+      <p style="margin-top: 1.5rem;">
+        The firm currently serves as <strong>Ad hoc Solicitor for the Naza Group of Companies</strong> and has successfully represented them in numerous matters.
+      </p>
+    </div>
+    <div class="about-stats reveal" style="transition-delay: 0.15s;">
+      <div class="stat-card">
+        <div class="stat-number">2009</div>
+        <div class="stat-label">Year Established</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">20+</div>
+        <div class="stat-label">Years of Practice</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">8</div>
+        <div class="stat-label">Published Case Decisions</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">RM1M</div>
+        <div class="stat-label">PI Coverage 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── Practice Areas ─── -->
+  <div id="practice">
+    <div class="inner">
+      <p class="section-label reveal">Areas of Practice</p>
+      <h2 class="section-heading reveal" style="transition-delay: 0.1s;">Comprehensive Legal<br /><em>Expertise</em></h2>
+      <div class="practice-grid">
+
+        <div class="practice-card reveal">
+          <svg class="practice-icon" viewBox="0 0 40 40" fill="none" stroke="#00c8e8" stroke-width="1.2">
+            <rect x="6" y="4" width="28" height="32" rx="2"/>
+            <line x1="12" y1="13" x2="28" y2="13"/>
+            <line x1="12" y1="19" x2="28" y2="19"/>
+            <line x1="12" y1="25" x2="20" y2="25"/>
+          </svg>
+          <h3>Civil Litigation</h3>
+          <p>Comprehensive representation in all civil matters before courts at every level.</p>
+          <ul>
+            <li>Goods Sold &amp; Delivered</li>
+            <li>Injunctions (Anton Pillar, Mareva)</li>
+            <li>Bankruptcy &amp; Insolvency</li>
+            <li>Contractual Disputes</li>
+            <li>Land Disputes</li>
+          </ul>
+        </div>
+
+        <div class="practice-card reveal" style="transition-delay: 0.08s;">
+          <svg class="practice-icon" viewBox="0 0 40 40" fill="none" stroke="#00c8e8" stroke-width="1.2">
+            <circle cx="20" cy="12" r="6"/>
+            <path d="M8 34c0-6.627 5.373-12 12-12s12 5.373 12 12"/>
+            <line x1="20" y1="24" x2="20" y2="34"/>
+          </svg>
+          <h3>Insurance Litigation</h3>
+          <p>Specialists in motor and non-motor insurance disputes with an extensive track record.</p>
+          <ul>
+            <li>Bodily Injury Claims</li>
+            <li>Fatal Claims</li>
+            <li>Subrogation Claims</li>
+            <li>Fraud Actions</li>
+            <li>Declaration Suits</li>
+          </ul>
+        </div>
+
+        <div class="practice-card reveal" style="transition-delay: 0.16s;">
+          <svg class="practice-icon" viewBox="0 0 40 40" fill="none" stroke="#00c8e8" stroke-width="1.2">
+            <path d="M20 4L4 14v4h32v-4L20 4z"/>
+            <rect x="8" y="18" width="6" height="14"/>
+            <rect x="17" y="18" width="6" height="14"/>
+            <rect x="26" y="18" width="6" height="14"/>
+            <line x1="4" y1="32" x2="36" y2="32"/>
+          </svg>
+          <h3>Criminal Matters</h3>
+          <p>Experienced defence counsel in criminal proceedings across all court levels.</p>
+          <ul>
+            <li>Drug-related Offences</li>
+            <li>Traffic Offences (S.41 &amp; 43 RTA)</li>
+            <li>Criminal Defence</li>
+            <li>Appellate Courts</li>
+          </ul>
+        </div>
+
+        <div class="practice-card reveal" style="transition-delay: 0.08s;">
+          <svg class="practice-icon" viewBox="0 0 40 40" fill="none" stroke="#00c8e8" stroke-width="1.2">
+            <path d="M10 6h20v28H10z"/>
+            <path d="M15 6V4h10v2"/>
+            <line x1="15" y1="14" x2="25" y2="14"/>
+            <line x1="15" y1="20" x2="25" y2="20"/>
+            <line x1="15" y1="26" x2="21" y2="26"/>
+          </svg>
+          <h3>Conveyancing</h3>
+          <p>Full conveyancing services for residential and commercial property transactions.</p>
+          <ul>
+            <li>Sub-sale &amp; Purchases</li>
+            <li>Discharge of Charge</li>
+            <li>Assignment &amp; Reassignment</li>
+            <li>Joint Venture Agreements</li>
+            <li>Sale &amp; Purchase Agreements</li>
+          </ul>
+        </div>
+
+        <div class="practice-card reveal" style="transition-delay: 0.16s;">
+          <svg class="practice-icon" viewBox="0 0 40 40" fill="none" stroke="#00c8e8" stroke-width="1.2">
+            <path d="M20 6l-3 8H7l7 5-3 8 9-6 9 6-3-8 7-5H23l-3-8z"/>
+          </svg>
+          <h3>Clinical Negligence</h3>
+          <p>Dedicated expertise in medical and clinical negligence claims, protecting patient rights and ensuring accountability.</p>
+        </div>
+
+        <div class="practice-card reveal" style="transition-delay: 0.24s;">
+          <svg class="practice-icon" viewBox="0 0 40 40" fill="none" stroke="#00c8e8" stroke-width="1.2">
+            <rect x="4" y="10" width="32" height="24" rx="2"/>
+            <path d="M14 10V8a2 2 0 014 0v2"/>
+            <path d="M22 10V8a2 2 0 014 0v2"/>
+            <line x1="4" y1="18" x2="36" y2="18"/>
+          </svg>
+          <h3>Probate &amp; Administration</h3>
+          <p>Efficient handling of estate administration, letters of administration, and probate proceedings.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── Counsel Profile ─── -->
+  <section id="counsel">
+    <div class="counsel-card reveal">
+      <img src="brand-assets/WhatsApp Image 2026-05-03 at 17.50.15.jpeg" alt="AP Monogram" class="counsel-monogram" />
+      <div class="counsel-name">Rajan Ayappan</div>
+      <div class="counsel-title">Principal Counsel</div>
+      <ul class="counsel-meta">
+        <li><span>Called</span><span>30 April 2004</span></li>
+        <li><span>Bar</span><span>Malaysian Bar</span></li>
+        <li><span>Court</span><span>High Court of Malaya</span></li>
+        <li><span>PI Cover</span><span>RM 1,000,000 (2026)</span></li>
+        <li><span>Pupilage</span><span>Messrs Jaffar &amp; Menon</span></li>
+      </ul>
+    </div>
+    <div class="counsel-bio reveal" style="transition-delay: 0.15s;">
+      <p class="section-label">Counsel Profile</p>
+      <h2 class="section-heading">An Advocate Built on<br /><em>Depth of Knowledge</em></h2>
+      <hr class="hr-accent" />
+      <p>
+        <strong>Rajan Ayappan</strong> is the principal counsel of Ayappan &amp; Partners, called to the Malaysian Bar and admitted as an Advocate &amp; Solicitor of the High Court of Malaya on 30 April 2004. He read law as a pupil in the chambers of Muralee Menon at Messrs Jaffar &amp; Menon.
+      </p>
+      <p>
+        His core areas of expertise span <strong>insurance litigation</strong> (motor &amp; non-motor), clinical negligence, probate &amp; administration, land disputes, and conveyancing. He is widely recognised for work in these fields and has secured landmark decisions before the Federal Court and Court of Appeal.
+      </p>
+      <p>
+        The firm currently serves as <strong>Ad hoc Solicitor for the Naza Group of Companies</strong>, having successfully completed transactions including a joint venture agreement valued at RM 15.4 million and a sale &amp; purchase agreement for a building valued at RM 8 million.
+      </p>
+      <div class="qualifications">
+        <h4>Academic Qualifications</h4>
+        <ul class="qual-list">
+          <li>Bachelor of Laws with Honours — University of London (1999)</li>
+          <li>Certificate in Legal Practice (2002)</li>
+          <li>Diploma in International Arbitration — Malaysian Institute of Arbitrators / Brickfields Asia College (2018)</li>
+          <li>Master's of Law in Business Law — International Islamic University Malaysia</li>
+          <li>Certificate in Business — London Chambers of Commerce &amp; Industry Examination Board, UK (1993)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── Notable Cases ─── -->
+  <div id="cases">
+    <div class="inner">
+      <p class="section-label reveal">Published Decisions</p>
+      <h2 class="section-heading reveal" style="transition-delay: 0.1s;">Notable<br /><em>Case Law</em></h2>
+      <div class="cases-list">
+
+        <div class="case-item reveal">
+          <div class="case-name">AmGeneral Insurance Bhd v Sa'Amran a/l Atan &amp; Ors and other appeals [2022] 8 CLJ 175</div>
+          <span class="case-badge">Federal Court · Landmark</span>
+        </div>
+
+        <div class="case-item reveal" style="transition-delay: 0.06s;">
+          <div class="case-name">Rasip Hamsudi &amp; Ors v Pacific &amp; Orient Insurance Berhad [2015] 7 CLJ 984</div>
+          <span class="case-badge">Court of Appeal</span>
+        </div>
+
+        <div class="case-item reveal" style="transition-delay: 0.12s;">
+          <div class="case-name">Pacific &amp; Oriental Insurance Co Bhd v Arnanda Soria Demadu [2021] 1 CLJ 523</div>
+          <span class="case-badge">Court of Appeal</span>
+        </div>
+
+        <div class="case-item reveal" style="transition-delay: 0.18s;">
+          <div class="case-name">Badariah Mohamed &amp; Anor v Zuren Sdn Bhd [2017] CLJU 611</div>
+          <span class="case-badge">High Court · Shah Alam</span>
+        </div>
+
+        <div class="case-item reveal" style="transition-delay: 0.24s;">
+          <div class="case-name">Maria Soosai Retnam v Hong Leong Bank Berhad [2014] 1 LNS 1378</div>
+          <span class="case-badge">High Court · Shah Alam</span>
+        </div>
+
+        <div class="case-item reveal" style="transition-delay: 0.30s;">
+          <div class="case-name">Mohd Farmizi Osman v Mohd Shafarn Ismail [2013] 5 LNS 29</div>
+          <span class="case-badge">Session Court · Kuantan</span>
+        </div>
+
+        <div class="case-item reveal" style="transition-delay: 0.36s;">
+          <div class="case-name">Mayban Finance Bhd v Yau Jiok Hua [2007] 7 CLJ 609</div>
+          <span class="case-badge">High Court · Kuala Lumpur</span>
+        </div>
+
+        <div class="case-item reveal" style="transition-delay: 0.42s;">
+          <div class="case-name">Azmir Mirza Mahmud v PP [2025] CLJU 1885</div>
+          <span class="case-badge">High Court · Temerloh</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ─── Contact ─── -->
+  <div id="contact">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 0 4rem 8rem;">
+      <p class="section-label reveal">Get in Touch</p>
+      <h2 class="section-heading reveal" style="transition-delay: 0.1s;">Begin Your<br /><em>Legal Journey</em></h2>
+      <div class="contact-grid">
+        <div class="contact-info reveal" style="transition-delay: 0.15s;">
+          <h3>We are here<br />to help you.</h3>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Address</strong>
+              L2-10, Desa Sentul Shop Office, Sentul Village<br />
+              No.10, Jalan Sentul Perdana<br />
+              51000 Sentul, Kuala Lumpur
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.03 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Telephone</strong>
+              03-4032 3771
+            </div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="contact-detail-text">
+              <strong>Email</strong>
+              ayappanpartners@gmail.com
+            </div>
+          </div>
+          <div style="margin-top: 2.5rem; padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--cyan);">
+            <p style="font-family: var(--font-sub); font-style: italic; font-size: 1rem; color: var(--steel); line-height: 1.7;">
+              "At Ayappan &amp; Partners, we establish a personalised relationship with our clients by ensuring reliability, trust, and quality of work in everything we do."
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-form reveal" style="transition-delay: 0.25s;">
+          <h3>Send Us a Message</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+60 12-345 6789" />
+          </div>
+          <div class="form-group">
+            <label>Area of Legal Concern</label>
+            <select>
+              <option value="">Select a practice area</option>
+              <option>Civil Litigation</option>
+              <option>Insurance Litigation</option>
+              <option>Criminal Matters</option>
+              <option>Conveyancing</option>
+              <option>Clinical Negligence</option>
+              <option>Probate &amp; Administration</option>
+              <option>Corporate &amp; Commercial</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Brief Description</label>
+            <textarea placeholder="Briefly describe your legal matter…"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer; border: none;">Submit Enquiry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Footer ─── -->
+  <footer>
+    <div class="footer-logo">
+      <img src="brand-assets/WhatsApp Image 2026-05-03 at 17.50.15.jpeg" alt="AP" class="emblem" />
+      <span class="wordmark-text">Ayappan &amp; Partners</span>
+    </div>
+    <p class="footer-text">
+      © 2026 Ayappan &amp; Partners · Advocates &amp; Solicitors · Sentul, Kuala Lumpur<br />
+      <span style="color: var(--steel-dim); font-size: 0.68rem; margin-top: 0.2rem; display: block;">Registered with the Malaysian Bar · Professional Indemnity Coverage RM 1,000,000</span>
+    </p>
+    <ul class="footer-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    // ─── Sticky nav on scroll ───
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // ─── Scroll reveal ───
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ─── Contact form (no backend — UX only) ───
+    document.querySelector('button[type="submit"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      this.textContent = 'Message Sent ✓';
+      this.style.background = 'var(--steel-dim)';
+      setTimeout(() => {
+        this.textContent = 'Submit Enquiry';
+        this.style.background = '';
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
