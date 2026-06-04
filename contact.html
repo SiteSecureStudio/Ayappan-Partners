@@ -91,55 +91,73 @@
             </div>
           </div>
 
-          <div style="margin-top: 2.5rem; padding: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--cyan);">
-            <p style="font-family: var(--font-sub); font-style: italic; font-size: 1rem; color: #756650; line-height: 1.7;">
+          <div style="margin-top: 2.5rem; padding: 1.6rem 1.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; border-left: 3px solid var(--cyan);">
+            <p style="font-family: var(--font-sub); font-style: italic; font-size: 1.05rem; color: #756650; line-height: 1.75;">
               "At Ayappan &amp; Partners, we establish a personalised relationship with our clients by ensuring reliability, trust, and quality of work in everything we do."
             </p>
-            <p style="font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); margin-top: 0.8rem;">Rajan Ayappan · Principal Counsel</p>
+            <div style="display:flex; align-items:center; gap:0.6rem; margin-top:1rem;">
+              <span class="badge badge-accent">Rajan Ayappan</span>
+              <span style="font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:#9A7060;">Principal Counsel</span>
+            </div>
           </div>
         </div>
 
         <!-- Form -->
-        <div class="contact-form reveal" style="transition-delay: 0.2s;">
-          <h3>Send Us a Message</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label>First Name</label>
-              <input type="text" placeholder="John" />
+        <div class="reveal" style="transition-delay: 0.2s;">
+          <div class="sc-card">
+            <div class="sc-card-header">
+              <h3 style="font-family:var(--font-display); font-size:1.25rem; font-weight:500; color:#2C1208; letter-spacing:-0.01em;">Send Us a Message</h3>
+              <p style="font-size:0.82rem; color:#756650; margin-top:0.3rem; line-height:1.5;">Every enquiry is reviewed by principal counsel personally.</p>
             </div>
-            <div class="form-group">
-              <label>Last Name</label>
-              <input type="text" placeholder="Smith" />
+            <div class="sc-card-body">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fname">First Name</label>
+                  <input id="fname" type="text" placeholder="John" />
+                </div>
+                <div class="form-group">
+                  <label for="lname">Last Name</label>
+                  <input id="lname" type="text" placeholder="Smith" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" placeholder="john@example.com" />
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input id="phone" type="tel" placeholder="+60 12-345 6789" />
+              </div>
+              <div class="form-group">
+                <label for="area">Area of Legal Concern</label>
+                <select id="area">
+                  <option value="">Select a practice area</option>
+                  <option>Civil Litigation</option>
+                  <option>Insurance Litigation</option>
+                  <option>Criminal Matters</option>
+                  <option>Conveyancing</option>
+                  <option>Clinical Negligence</option>
+                  <option>Probate &amp; Administration</option>
+                  <option>Corporate &amp; Commercial</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="matter">Brief Description of Your Matter</label>
+                <textarea id="matter" placeholder="Briefly describe your legal matter — the more detail you provide, the better we can assist you…"></textarea>
+              </div>
+              <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer; border: none;">Submit Enquiry</button>
+            </div>
+            <div class="sc-card-footer">
+              <div class="callout" style="padding:0.9rem 1rem; border-radius:4px;">
+                <svg class="callout-icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <div class="callout-content">
+                  <div class="callout-title">Solicitor-Client Privilege</div>
+                  Your enquiry is confidential and protected from the moment of contact. We do not share client information.
+                </div>
+              </div>
             </div>
           </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="john@example.com" />
-          </div>
-          <div class="form-group">
-            <label>Phone Number</label>
-            <input type="tel" placeholder="+60 12-345 6789" />
-          </div>
-          <div class="form-group">
-            <label>Area of Legal Concern</label>
-            <select>
-              <option value="">Select a practice area</option>
-              <option>Civil Litigation</option>
-              <option>Insurance Litigation</option>
-              <option>Criminal Matters</option>
-              <option>Conveyancing</option>
-              <option>Clinical Negligence</option>
-              <option>Probate &amp; Administration</option>
-              <option>Corporate &amp; Commercial</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label>Brief Description of Your Matter</label>
-            <textarea placeholder="Briefly describe your legal matter — the more detail you provide, the better we can assist you…"></textarea>
-          </div>
-          <button type="submit" class="btn-primary" style="width: 100%; cursor: pointer; border: none;">Submit Enquiry</button>
-          <p style="font-size: 0.72rem; color: #9A7060; margin-top: 1rem; line-height: 1.6;">Your enquiry is confidential and protected by solicitor-client privilege from the moment of contact.</p>
         </div>
 
       </div>
