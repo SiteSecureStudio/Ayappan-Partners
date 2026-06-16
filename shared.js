@@ -11,13 +11,13 @@
   window.addEventListener('resize', resize);
 
   const blobs = [
-    { x: 0.25, y: 0.15, r: 0.55, color: [180, 70, 40],  vx:  0.00012, vy:  0.00008 },
-    { x: 0.75, y: 0.40, r: 0.45, color: [214, 101, 75], vx: -0.00010, vy:  0.00014 },
-    { x: 0.50, y: 0.80, r: 0.50, color: [150, 55, 30],  vx:  0.00008, vy: -0.00012 },
-    { x: 0.10, y: 0.65, r: 0.40, color: [200, 140, 100],vx:  0.00014, vy: -0.00008 },
-    { x: 0.85, y: 0.85, r: 0.42, color: [120, 45, 25],  vx: -0.00009, vy:  0.00010 },
+    { x: 0.25, y: 0.15, r: 0.55, color: [200, 147, 53],  vx:  0.00012, vy:  0.00008 },
+    { x: 0.75, y: 0.40, r: 0.45, color: [242, 228, 140], vx: -0.00010, vy:  0.00014 },
+    { x: 0.50, y: 0.80, r: 0.50, color: [166, 120, 32],  vx:  0.00008, vy: -0.00012 },
+    { x: 0.10, y: 0.65, r: 0.40, color: [220, 195, 115], vx:  0.00014, vy: -0.00008 },
+    { x: 0.85, y: 0.85, r: 0.42, color: [142, 100, 22],  vx: -0.00009, vy:  0.00010 },
   ];
-  const alphas = [0.22, 0.10, 0.18, 0.09, 0.15];
+  const alphas = [0.18, 0.09, 0.14, 0.08, 0.12];
 
   function drawBlob(b, a) {
     const W = canvas.width, H = canvas.height;
@@ -34,7 +34,7 @@
 
   function tick() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#FFF1D0';
+    ctx.fillStyle = '#FFF4D6';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     blobs.forEach((b, i) => {
       b.x += b.vx; b.y += b.vy;

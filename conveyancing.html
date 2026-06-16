@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero-inner { max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; position:relative; }
+    .hero-left  { position:relative; z-index:2; }
+    .hero-right { display:flex; align-items:center; justify-content:center; opacity:0; transform:translateX(30px); animation:fadeRight 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s forwards; }
+    @keyframes fadeRight { to { opacity:1; transform:translateX(0); } }
+    @media (max-width:768px) { .hero-inner { grid-template-columns:1fr; } .hero-right { display:none; } }
+  </style>
 </head>
 <body>
 
@@ -26,11 +33,135 @@
   </nav>
 
   <div class="page-hero">
-    <div style="max-width:1240px; margin:0 auto; position:relative;">
-      <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="practice-areas.html">Practice Areas</a> <span>/</span> Conveyancing</div>
-      <p class="page-hero-eyebrow">Residential &amp; Commercial · Property Transactions</p>
-      <h1 class="page-hero-title"><em>Conveyancing</em></h1>
-      <p class="page-hero-sub">Full conveyancing services for residential and commercial transactions — from sub-sales to high-value joint ventures for corporate clients.</p>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="practice-areas.html">Practice Areas</a> <span>/</span> Conveyancing</div>
+        <p class="page-hero-eyebrow">Residential &amp; Commercial · Property Transactions</p>
+        <h1 class="page-hero-title"><em>Conveyancing</em></h1>
+        <p class="page-hero-sub">Full conveyancing services for residential and commercial transactions — from sub-sales to high-value joint ventures for corporate clients.</p>
+      </div>
+      <div class="hero-right">
+        <!-- Property House + Ornate Key illustration -->
+        <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" fill="none"
+             style="width:100%; max-width:520px; opacity:0.45;" aria-hidden="true">
+          <g stroke="#C89335" stroke-linecap="round" stroke-linejoin="round">
+
+            <!-- BOTANICAL — flowering vine top right -->
+            <g stroke-width="1" opacity="0.6">
+              <path d="M448 10 C468 28 490 52 504 82 C512 104 510 134 500 158"/>
+              <path d="M462 18 C476 10 494 8 502 2 Q498 18 484 22"/>
+              <path d="M474 34 C490 24 506 22 512 14 Q508 30 494 34"/>
+              <path d="M486 56 C502 46 516 44 520 36 Q516 52 502 54"/>
+              <path d="M496 80 C510 72 522 70 524 62 Q520 78 506 78"/>
+              <path d="M500 106 C512 100 522 98 524 90 Q520 106 508 104"/>
+              <!-- Small circular flower buds -->
+              <circle cx="462" cy="20" r="5" stroke-width="0.9"/>
+              <circle cx="476" cy="36" r="4" stroke-width="0.9"/>
+              <circle cx="488" cy="58" r="4" stroke-width="0.9"/>
+              <circle cx="498" cy="82" r="3.5" stroke-width="0.9"/>
+            </g>
+
+            <!-- HOUSE FACADE (front elevation) -->
+            <!-- Ground / plinth -->
+            <rect x="78"  y="380" width="310" height="14" rx="0" stroke-width="1.5"/>
+            <rect x="68"  y="390" width="330" height="12" rx="0" stroke-width="1.5"/>
+            <!-- Main house body -->
+            <rect x="88" y="218" width="290" height="162" rx="2" stroke-width="2"/>
+            <!-- PITCHED ROOF -->
+            <polyline points="68,218 233,108 398,218" stroke-width="2.2"/>
+            <!-- Roof inner (soffit line) -->
+            <polyline points="88,218 233,122 378,218" stroke-width="1" opacity="0.45"/>
+            <!-- Roof ridge tile line -->
+            <line x1="233" y1="108" x2="233" y2="122" stroke-width="1.2" opacity="0.6"/>
+            <!-- LEFT CHIMNEY -->
+            <rect x="120" y="126" width="28" height="68" rx="2" stroke-width="1.5"/>
+            <rect x="116" y="122" width="36" height="8"  rx="1" stroke-width="1.3"/>
+            <!-- Chimney pots -->
+            <rect x="124" y="112" width="8" height="14" rx="2" stroke-width="1.1"/>
+            <rect x="136" y="116" width="6" height="10" rx="2" stroke-width="1.1"/>
+            <!-- RIGHT CHIMNEY -->
+            <rect x="318" y="126" width="28" height="68" rx="2" stroke-width="1.5"/>
+            <rect x="314" y="122" width="36" height="8"  rx="1" stroke-width="1.3"/>
+            <rect x="322" y="112" width="8" height="14" rx="2" stroke-width="1.1"/>
+            <rect x="334" y="116" width="6" height="10" rx="2" stroke-width="1.1"/>
+            <!-- GABLE WINDOW (dormer) in roof -->
+            <rect x="212" y="152" width="42" height="44" rx="2" stroke-width="1.3"/>
+            <path d="M208,152 Q233,138 258,152" stroke-width="1.3"/>
+            <line x1="233" y1="138" x2="233" y2="196" stroke-width="0.8"/>
+            <line x1="208" y1="174" x2="258" y2="174" stroke-width="0.7"/>
+            <!-- FRONT DOOR (central, arched) -->
+            <rect x="208" y="296" width="50" height="84" rx="2" stroke-width="1.6"/>
+            <path d="M208,296 Q233,274 258,296" stroke-width="1.6"/>
+            <line x1="233" y1="274" x2="233" y2="296" stroke-width="0.8"/>
+            <path d="M216,284 Q224,276 233,274" stroke-width="0.6" opacity="0.6"/>
+            <path d="M250,284 Q242,276 233,274" stroke-width="0.6" opacity="0.6"/>
+            <line x1="233" y1="296" x2="233" y2="380" stroke-width="0.8"/>
+            <rect x="212" y="304" width="17" height="22" rx="1.5" stroke-width="0.9"/>
+            <rect x="237" y="304" width="17" height="22" rx="1.5" stroke-width="0.9"/>
+            <rect x="212" y="334" width="17" height="26" rx="1.5" stroke-width="0.9"/>
+            <rect x="237" y="334" width="17" height="26" rx="1.5" stroke-width="0.9"/>
+            <circle cx="231" cy="348" r="2.5" stroke-width="1"/>
+            <circle cx="235" cy="348" r="2.5" stroke-width="1"/>
+            <!-- Portico (small porch canopy) -->
+            <line x1="196" y1="294" x2="270" y2="294" stroke-width="1.3"/>
+            <line x1="200" y1="294" x2="200" y2="316" stroke-width="1.2"/>
+            <line x1="266" y1="294" x2="266" y2="316" stroke-width="1.2"/>
+            <!-- GROUND FLOOR WINDOWS — left pair -->
+            <rect x="104" y="252" width="46" height="56" rx="2" stroke-width="1.3"/>
+            <path d="M104,252 Q127,238 150,252" stroke-width="1.3"/>
+            <line x1="127" y1="238" x2="127" y2="308" stroke-width="0.75"/>
+            <line x1="104" y1="280" x2="150" y2="280" stroke-width="0.7"/>
+            <!-- GROUND FLOOR WINDOWS — right pair -->
+            <rect x="316" y="252" width="46" height="56" rx="2" stroke-width="1.3"/>
+            <path d="M316,252 Q339,238 362,252" stroke-width="1.3"/>
+            <line x1="339" y1="238" x2="339" y2="308" stroke-width="0.75"/>
+            <line x1="316" y1="280" x2="362" y2="280" stroke-width="0.7"/>
+            <!-- UPPER FLOOR WINDOWS — left -->
+            <rect x="104" y="230" width="46" height="16" rx="1" stroke-width="1" opacity="0.5"/>
+            <!-- Upper windows sill lines -->
+            <line x1="100" y1="308" x2="154" y2="308" stroke-width="1"/>
+            <line x1="312" y1="308" x2="366" y2="308" stroke-width="1"/>
+
+            <!-- ORNATE KEY (right side, partially overlapping house) -->
+            <g opacity="0.85">
+              <!-- Key bow (ring/head) -->
+              <circle cx="430" cy="188" r="42" stroke-width="2.2"/>
+              <circle cx="430" cy="188" r="28" stroke-width="1.3"/>
+              <circle cx="430" cy="188" r="14" stroke-width="1" opacity="0.6"/>
+              <!-- Decorative cross in key bow -->
+              <line x1="430" y1="162" x2="430" y2="214" stroke-width="1" opacity="0.55"/>
+              <line x1="404" y1="188" x2="456" y2="188" stroke-width="1" opacity="0.55"/>
+              <!-- Key shank (shaft going down) -->
+              <line x1="430" y1="230" x2="430" y2="420" stroke-width="2.5"/>
+              <!-- Key shoulder ring (decorative band on shank) -->
+              <line x1="422" y1="258" x2="438" y2="258" stroke-width="1.5"/>
+              <line x1="422" y1="264" x2="438" y2="264" stroke-width="1.5"/>
+              <!-- Key bit (teeth) at bottom right -->
+              <line x1="430" y1="348" x2="452" y2="348" stroke-width="2"/>
+              <line x1="430" y1="366" x2="446" y2="366" stroke-width="2"/>
+              <line x1="430" y1="384" x2="456" y2="384" stroke-width="2"/>
+              <line x1="430" y1="402" x2="442" y2="402" stroke-width="2"/>
+            </g>
+
+            <!-- TITLE DEED SCROLL at base -->
+            <g stroke-width="1.2" opacity="0.48">
+              <rect x="68" y="418" width="200" height="42" rx="3"/>
+              <line x1="68" y1="428" x2="268" y2="428" stroke-width="0.8"/>
+              <!-- Rolled scroll end -->
+              <path d="M68,418 C60,422 56,430 60,440 C64,450 68,454 68,460" stroke-width="1"/>
+              <path d="M268,418 C276,422 280,430 276,440 C272,450 268,454 268,460" stroke-width="1"/>
+              <!-- Text lines on scroll -->
+              <line x1="82"  y1="436" x2="200" y2="436" stroke-width="0.8"/>
+              <line x1="82"  y1="444" x2="190" y2="444" stroke-width="0.8"/>
+              <line x1="82"  y1="452" x2="210" y2="452" stroke-width="0.8"/>
+              <!-- Wax seal -->
+              <circle cx="242" cy="445" r="16" stroke-width="1.2"/>
+              <circle cx="242" cy="445" r="10" stroke-width="0.8" opacity="0.6"/>
+            </g>
+
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 

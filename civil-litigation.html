@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .hero-inner { max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; position:relative; }
+    .hero-left  { position:relative; z-index:2; }
+    .hero-right { display:flex; align-items:center; justify-content:center; opacity:0; transform:translateX(30px); animation:fadeRight 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s forwards; }
+    @keyframes fadeRight { to { opacity:1; transform:translateX(0); } }
+    @media (max-width:768px) { .hero-inner { grid-template-columns:1fr; } .hero-right { display:none; } }
+  </style>
 </head>
 <body>
 
@@ -26,11 +33,116 @@
   </nav>
 
   <div class="page-hero">
-    <div style="max-width:1240px; margin:0 auto; position:relative;">
-      <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="practice-areas.html">Practice Areas</a> <span>/</span> Civil Litigation</div>
-      <p class="page-hero-eyebrow">Courts at All Levels · Magistrate to Federal Court</p>
-      <h1 class="page-hero-title">Civil <em>Litigation</em></h1>
-      <p class="page-hero-sub">Full-spectrum civil representation — from contractual disputes and injunctions to land matters and insolvency proceedings.</p>
+    <div class="hero-inner">
+      <div class="hero-left">
+        <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <a href="practice-areas.html">Practice Areas</a> <span>/</span> Civil Litigation</div>
+        <p class="page-hero-eyebrow">Courts at All Levels · Magistrate to Federal Court</p>
+        <h1 class="page-hero-title">Civil <em>Litigation</em></h1>
+        <p class="page-hero-sub">Full-spectrum civil representation — from contractual disputes and injunctions to land matters and insolvency proceedings.</p>
+      </div>
+      <div class="hero-right">
+        <!-- Scales of Justice illustration -->
+        <svg viewBox="0 0 520 480" xmlns="http://www.w3.org/2000/svg" fill="none"
+             style="width:100%; max-width:520px; opacity:0.45;" aria-hidden="true">
+          <g stroke="#C89335" stroke-linecap="round" stroke-linejoin="round">
+
+            <!-- LAUREL BRANCHES — left and right framing -->
+            <g stroke-width="1" opacity="0.58">
+              <path d="M52 444 C62 412 76 380 86 350 C94 326 100 304 104 278"/>
+              <path d="M56 430 C44 418 38 402 40 386 Q52 400 52 416"/>
+              <path d="M68 406 C56 392 52 376 56 360 Q68 376 66 392"/>
+              <path d="M78 380 C68 364 66 346 72 332 Q84 348 80 366"/>
+              <path d="M88 352 C80 336 80 316 88 302 Q98 318 94 336"/>
+              <path d="M96 322 C90 306 92 288 100 274 Q110 290 104 308"/>
+              <path d="M102 292 C98 276 102 258 110 244 Q120 260 114 278"/>
+            </g>
+            <g stroke-width="1" opacity="0.58">
+              <path d="M468 444 C458 412 444 380 434 350 C426 326 420 304 416 278"/>
+              <path d="M464 430 C476 418 482 402 480 386 Q468 400 468 416"/>
+              <path d="M452 406 C464 392 468 376 464 360 Q452 376 454 392"/>
+              <path d="M442 380 C452 364 454 346 448 332 Q436 348 440 366"/>
+              <path d="M432 352 C440 336 440 316 432 302 Q422 318 426 336"/>
+              <path d="M424 322 C430 306 428 288 420 274 Q410 290 416 308"/>
+              <path d="M418 292 C422 276 418 258 410 244 Q400 260 406 278"/>
+            </g>
+
+            <!-- LEGAL BOOKS stacked at base -->
+            <g stroke-width="1.2" opacity="0.45">
+              <rect x="38"  y="412" width="68" height="13" rx="1"/>
+              <rect x="42"  y="399" width="60" height="13" rx="1"/>
+              <rect x="46"  y="386" width="52" height="13" rx="1"/>
+              <line x1="42" y1="412" x2="42" y2="425"/> <line x1="46" y1="399" x2="46" y2="412"/> <line x1="50" y1="386" x2="50" y2="399"/>
+              <line x1="54" y1="390" x2="94" y2="390"/> <line x1="54" y1="393" x2="94" y2="393"/>
+            </g>
+            <g stroke-width="1.2" opacity="0.45">
+              <rect x="414" y="412" width="68" height="13" rx="1"/>
+              <rect x="418" y="399" width="60" height="13" rx="1"/>
+              <rect x="422" y="386" width="52" height="13" rx="1"/>
+              <line x1="478" y1="412" x2="478" y2="425"/> <line x1="474" y1="399" x2="474" y2="412"/> <line x1="470" y1="386" x2="470" y2="399"/>
+              <line x1="426" y1="390" x2="466" y2="390"/> <line x1="426" y1="393" x2="466" y2="393"/>
+            </g>
+
+            <!-- PEDESTAL -->
+            <rect x="152" y="416" width="216" height="18" rx="2" stroke-width="1.8"/>
+            <rect x="172" y="400" width="176" height="16" rx="1" stroke-width="1.8"/>
+            <line x1="172" y1="406" x2="348" y2="406" stroke-width="0.8" opacity="0.6"/>
+            <rect x="210" y="403" width="100" height="10" rx="1" stroke-width="0.8" opacity="0.5"/>
+
+            <!-- STAFF / VERTICAL COLUMN of scales -->
+            <line x1="260" y1="86" x2="260" y2="400" stroke-width="2.2"/>
+            <!-- Staff decorative bands -->
+            <line x1="250" y1="194" x2="270" y2="194" stroke-width="1.3"/>
+            <line x1="250" y1="200" x2="270" y2="200" stroke-width="1.3"/>
+            <line x1="250" y1="294" x2="270" y2="294" stroke-width="1.3"/>
+            <line x1="250" y1="300" x2="270" y2="300" stroke-width="1.3"/>
+
+            <!-- ORB at top -->
+            <circle cx="260" cy="72" r="18" stroke-width="1.8"/>
+            <circle cx="260" cy="72" r="10" stroke-width="0.9" opacity="0.55"/>
+            <line x1="244" y1="72" x2="276" y2="72" stroke-width="0.8" opacity="0.45"/>
+            <line x1="260" y1="56" x2="260" y2="88" stroke-width="0.8" opacity="0.45"/>
+
+            <!-- BALANCE BEAM -->
+            <line x1="112" y1="150" x2="408" y2="150" stroke-width="2.3"/>
+            <circle cx="260" cy="150" r="8"  stroke-width="1.6"/>
+            <circle cx="112" cy="150" r="5"  stroke-width="1.3"/>
+            <circle cx="408" cy="150" r="5"  stroke-width="1.3"/>
+            <line x1="124" y1="146" x2="250" y2="146" stroke-width="0.8" opacity="0.4"/>
+            <line x1="270" y1="146" x2="396" y2="146" stroke-width="0.8" opacity="0.4"/>
+
+            <!-- LEFT CHAIN (catenary curve) -->
+            <path d="M112,155 C110,198 108,238 112,278" stroke-width="1.4"/>
+            <path d="M112,167 C110,170 114,172 112,175" stroke-width="0.8" opacity="0.55"/>
+            <path d="M112,187 C110,190 114,192 112,195" stroke-width="0.8" opacity="0.55"/>
+            <path d="M112,207 C110,210 114,212 112,215" stroke-width="0.8" opacity="0.55"/>
+            <path d="M112,227 C110,230 114,232 112,235" stroke-width="0.8" opacity="0.55"/>
+            <path d="M112,247 C110,250 114,252 112,255" stroke-width="0.8" opacity="0.55"/>
+            <path d="M112,267 C110,270 114,272 112,275" stroke-width="0.8" opacity="0.55"/>
+
+            <!-- LEFT PAN -->
+            <path d="M76,278 Q112,266 148,278" stroke-width="1.8"/>
+            <path d="M76,278 Q112,292 148,278" stroke-width="1.3" opacity="0.5"/>
+            <line x1="84"  y1="278" x2="110" y2="272" stroke-width="1"/>
+            <line x1="140" y1="278" x2="114" y2="272" stroke-width="1"/>
+
+            <!-- RIGHT CHAIN (catenary curve) -->
+            <path d="M408,155 C410,198 412,238 408,278" stroke-width="1.4"/>
+            <path d="M408,167 C410,170 406,172 408,175" stroke-width="0.8" opacity="0.55"/>
+            <path d="M408,187 C410,190 406,192 408,195" stroke-width="0.8" opacity="0.55"/>
+            <path d="M408,207 C410,210 406,212 408,215" stroke-width="0.8" opacity="0.55"/>
+            <path d="M408,227 C410,230 406,232 408,235" stroke-width="0.8" opacity="0.55"/>
+            <path d="M408,247 C410,250 406,252 408,255" stroke-width="0.8" opacity="0.55"/>
+            <path d="M408,267 C410,270 406,272 408,275" stroke-width="0.8" opacity="0.55"/>
+
+            <!-- RIGHT PAN -->
+            <path d="M372,278 Q408,266 444,278" stroke-width="1.8"/>
+            <path d="M372,278 Q408,292 444,278" stroke-width="1.3" opacity="0.5"/>
+            <line x1="380" y1="278" x2="406" y2="272" stroke-width="1"/>
+            <line x1="436" y1="278" x2="410" y2="272" stroke-width="1"/>
+
+          </g>
+        </svg>
+      </div>
     </div>
   </div>
 
