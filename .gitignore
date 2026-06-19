@@ -1,7 +1,11 @@
 node_modules/
 temporary screenshots/
 temp_docx/
-screenshot-viewport.mjs
-screenshot-scroll.mjs
-screenshot-full-reveal.mjs
+screenshot*.mjs
+mobile-test*.mjs
 package-lock.json
+.vscode/
+.vexp/
+.claude/
+.claudeignore
+vexp.toml

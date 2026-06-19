@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -12,8 +12,29 @@
     .hero-inner { max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; position:relative; }
     .hero-left  { position:relative; z-index:2; }
     .hero-right { display:flex; align-items:center; justify-content:center; opacity:0; transform:translateX(30px); animation:fadeRight 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s forwards; }
+    .overview-section { background:#fff; padding:6rem 4rem; position:relative; z-index:1; }
+    .overview-inner { max-width:1240px; margin:0 auto; display:grid; grid-template-columns:1fr 400px; gap:5rem; align-items:start; }
+    .overview-label { display:flex; align-items:center; gap:1rem; font-size:0.68rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#1E1A10; margin-bottom:1.6rem; }
+    .overview-label::after { content:''; flex:0 0 40px; height:1px; background:#C89335; }
+    .overview-heading { font-family:var(--font-display); font-size:clamp(1.9rem, 3vw, 2.6rem); font-weight:600; color:#1E1A10; line-height:1.2; letter-spacing:-0.02em; margin-bottom:1.4rem; }
+    .overview-heading em { font-style:italic; color:#C89335; font-weight:500; }
+    .overview-desc { font-size:0.93rem; color:#5A4535; line-height:1.8; margin-bottom:2.6rem; max-width:560px; }
+    .pillars-grid { display:grid; grid-template-columns:repeat(4, 1fr); gap:1.25rem; }
+    .pillar-box { display:flex; flex-direction:column; gap:0.7rem; }
+    .pillar-icon { width:52px; height:52px; border-radius:50%; background:#FAF0D2; border:1px solid rgba(200,147,53,0.25); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .pillar-icon svg { width:22px; height:22px; }
+    .pillar-title { font-family:var(--font-body); font-size:0.8rem; font-weight:700; letter-spacing:0.05em; color:#C89335; }
+    .pillar-desc { font-size:0.78rem; color:#7A6045; line-height:1.6; }
+    .matters-card { border:1px solid rgba(200,147,53,0.3); border-left:3px solid #C89335; padding:2.5rem 2.2rem; background:#fff; position:relative; }
+    .matters-label { font-size:0.67rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#C89335; display:flex; align-items:center; gap:0.8rem; margin-bottom:1.6rem; }
+    .matters-label::after { content:''; flex:0 0 30px; height:1px; background:#C89335; }
+    .matters-list { list-style:none; display:flex; flex-direction:column; gap:0.85rem; }
+    .matters-list li { font-size:0.85rem; color:#5A4535; padding-left:1.4rem; position:relative; line-height:1.5; }
+    .matters-list li::before { content:'-'; position:absolute; left:0; color:#C89335; font-size:0.78rem; }
     @keyframes fadeRight { to { opacity:1; transform:translateX(0); } }
+    @media (max-width:1024px) { .pillars-grid { grid-template-columns:repeat(2, 1fr); } .overview-inner { grid-template-columns:1fr; gap:3rem; } .overview-section { padding:5rem 2rem; } }
     @media (max-width:768px) { .hero-inner { grid-template-columns:1fr; } .hero-right { display:none; } }
+    @media (max-width:640px) { .pillars-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -29,7 +50,7 @@
       <li><a href="principal-counsel.html">Counsel</a></li>
       <li><a href="published-decisions.html">Cases</a></li>
       <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
-    </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
 
   <div class="page-hero">
@@ -118,38 +139,25 @@
     </div>
   </div>
 
-  <section class="page-section" style="padding-top: 6rem;">
-    <div class="two-col two-col-wide">
-      <div class="content-block reveal">
-        <p class="section-label">Overview</p>
-        <h2 class="section-heading">Defence That<br /><em>Matters Most</em></h2>
-        <hr class="hr-accent" />
-        <p>When your liberty is at stake, you need a counsel who is prepared, present, and experienced. Ayappan &amp; Partners provides criminal defence representation across a range of offences, at all court levels from Magistrates' Court through to appellate proceedings.</p>
-        <p>Principal counsel has appeared in reported criminal decisions, including <em>Azmir Mirza Mahmud v PP [2025] CLJU 1885</em> at the High Court of Temerloh. We bring the same rigorous preparation to every criminal brief regardless of complexity.</p>
-        <p>We believe every accused person is entitled to the best possible defence. Our approach is thorough, frank, and focused on achieving the best outcome within the law.</p>
-        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="contact.html" class="btn-primary">Enquire About This Service</a>
-          <a href="practice-areas.html" class="btn-secondary">All Practice Areas</a>
+  <section id="overview" class="overview-section reveal">
+    <div class="overview-inner">
+      <div>
+        <div class="overview-label">Overview</div>
+        <h2 class="overview-heading">Defence That<br /><em>Matters Most</em></h2>
+        <p class="overview-desc">When your liberty is at stake, you need a counsel who is prepared, present, and experienced. Ayappan &amp; Partners provides criminal defence representation across a range of offences, at all court levels from Magistrates' Court through to appellate proceedings.</p>
+        <div class="pillars-grid">
+          <div class="pillar-box"><div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C89335" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M6 8h12"/><path d="M8 22h8"/></svg></div><div class="pillar-title">Immediate</div><div class="pillar-desc">Prompt advice on arrest, charge, bail, and early procedural decisions.</div></div>
+          <div class="pillar-box"><div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C89335" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l8-16 8 16"/><path d="M7 14h10"/></svg></div><div class="pillar-title">Trial-Focused</div><div class="pillar-desc">Thorough preparation aimed at exposing gaps in the prosecution case.</div></div>
+          <div class="pillar-box"><div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C89335" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18l12-12"/><path d="M8 6h10v10"/></svg></div><div class="pillar-title">Appellate</div><div class="pillar-desc">Support beyond trial where the result needs to be challenged or defended.</div></div>
+          <div class="pillar-box"><div class="pillar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C89335" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c2-4 6-6 8-6s6 2 8 6c-2 4-6 6-8 6s-6-2-8-6z"/><circle cx="12" cy="12" r="2.5"/></svg></div><div class="pillar-title">Confidential</div><div class="pillar-desc">Direct, discreet counsel on matters where timing and privacy matter.</div></div>
         </div>
       </div>
       <div class="reveal" style="transition-delay: 0.15s;">
-        <div style="background: var(--surface); border: 1px solid var(--border); padding: 2.5rem; position:relative;">
-          <div style="position:absolute; top:0; left:0; width:3px; height:50px; background: var(--cyan);"></div>
-          <p class="section-label" style="margin-bottom: 1.2rem;">Matters We Handle</p>
-          <ul style="list-style:none; display:flex; flex-direction:column; gap: 0.6rem;">
-            <li style="font-size:0.87rem; color:#756650; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--cyan);">—</span> Drug-related Offences (Dangerous Drugs Act)</li>
-            <li style="font-size:0.87rem; color:#756650; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--cyan);">—</span> Traffic Offences — Section 41 &amp; 43 RTA</li>
-            <li style="font-size:0.87rem; color:#756650; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--cyan);">—</span> General Criminal Defence</li>
-            <li style="font-size:0.87rem; color:#756650; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--cyan);">—</span> Criminal Appeals</li>
-            <li style="font-size:0.87rem; color:#756650; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--cyan);">—</span> Bail Applications</li>
-            <li style="font-size:0.87rem; color:#756650; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--cyan);">—</span> Mentions &amp; Plea Mitigation</li>
-            <li style="font-size:0.87rem; color:#756650; padding-left:1.2rem; position:relative;"><span style="position:absolute;left:0;color:var(--cyan);">—</span> Magistrates' Court to High Court</li>
-          </ul>
-        </div>
+        <div class="matters-card"><div class="matters-label">Matters We Handle</div><ul class="matters-list"><li>Drug-related Offences (Dangerous Drugs Act)</li><li>Traffic Offences - Section 41 &amp; 43 RTA</li><li>General Criminal Defence</li><li>Criminal Appeals</li><li>Bail Applications</li><li>Mentions &amp; Plea Mitigation</li><li>Magistrates' Court to High Court</li></ul></div>
+        <div class="matters-card" style="margin-top: 2px; border-left-color: #C89335;"><p style="font-size:0.67rem; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:#C89335; margin-bottom:0.5rem;">Reported Criminal Matter</p><p style="font-family: var(--font-sub); font-style:italic; font-size:0.92rem; color:#5A4535; line-height:1.6;">Azmir Mirza Mahmud v PP [2025] CLJU 1885</p><p style="font-size:0.72rem; color:#9A7C56; margin-top:0.35rem;">High Court of Temerloh</p></div>
       </div>
     </div>
   </section>
-
   <div class="divider"></div>
 
   <section class="page-section" style="padding-top: 6rem; padding-bottom: 6rem;">

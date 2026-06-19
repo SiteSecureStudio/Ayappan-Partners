@@ -927,30 +927,186 @@ footer {
   margin: 1.5rem 0 2.5rem;
 }
 
-/* ─── Responsive ─── */
+/* ─── Hamburger Button ─── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  position: relative;
+  z-index: 101;
+  flex-shrink: 0;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--muted);
+  border-radius: 1px;
+  transition: transform 0.3s var(--ease-out), opacity 0.2s ease, background 0.2s ease;
+  transform-origin: center;
+}
+
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); background: var(--cyan); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); background: var(--cyan); }
+
+/* ─── Touch Devices — hide cursor decoration ─── */
+@media (pointer: coarse) {
+  #cursor-glow, #cursor-dot { display: none !important; }
+  .btn-primary:hover { transform: none; box-shadow: 0 4px 24px rgba(200,147,53,0.3); }
+  .btn-outline:hover { transform: none; }
+  .practice-card:hover { transform: none; }
+}
+
+/* ─── Responsive — Tablet ─── */
 @media (max-width: 1024px) {
   nav { padding: 0 2rem; }
   section, .page-section { padding: 5rem 2rem; }
   .page-hero { padding: 140px 2rem 5rem; }
+  .dark-section { padding: 5rem 2rem; }
+  .cta-banner { padding: 4rem 2rem; }
   #about { grid-template-columns: 1fr; gap: 3rem; }
   #counsel { grid-template-columns: 1fr; gap: 2.5rem; }
   .practice-grid .practice-card { flex: 0 0 calc(50% - 0.75px); }
   .contact-grid { grid-template-columns: 1fr; }
-  footer { flex-direction: column; text-align: center; }
+  #contact { padding: 5rem 2rem; }
+  footer { flex-direction: column; text-align: center; padding: 2.5rem 2rem; }
+  .footer-links { justify-content: center; }
   .two-col, .two-col-wide { grid-template-columns: 1fr; gap: 3rem; }
   .process-steps { grid-template-columns: repeat(2, 1fr); }
-  .dark-section { padding: 5rem 2rem; }
-  .cta-banner { padding: 4rem 2rem; }
+  .divider { margin: 0 2rem; max-width: calc(100% - 4rem); }
 }
 
+/* ─── Responsive — Mobile ─── */
 @media (max-width: 640px) {
-  .nav-links { display: none; }
+  /* Hamburger nav */
+  .nav-hamburger { display: flex; }
+
+  .nav-links {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 80px; left: 0; right: 0;
+    background: rgba(255, 244, 214, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(185, 165, 110, 0.3);
+    padding: 0.5rem 0 1rem;
+    gap: 0;
+    list-style: none;
+    transform: translateY(-110%);
+    transition: transform 0.35s var(--ease-out);
+    z-index: 99;
+    box-shadow: 0 8px 32px rgba(44, 18, 8, 0.08);
+  }
+
+  .nav-links.open { transform: translateY(0); }
+
+  .nav-links li { border-bottom: 1px solid rgba(185, 165, 110, 0.12); }
+  .nav-links li:last-child { border-bottom: none; }
+
+  .nav-links a {
+    display: block;
+    padding: 0.9rem 1.75rem;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links .nav-cta {
+    border: none;
+    border-radius: 0;
+    padding: 0.9rem 1.75rem;
+    color: var(--cyan) !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  .nav-logo .wordmark-text { font-size: 0.92rem; }
+
+  /* Section layout */
+  section, .page-section { padding: 3.5rem 1.25rem; }
+  .dark-section { padding: 3.5rem 1.25rem; }
+  .cta-banner { padding: 3rem 1.25rem; }
+  #contact { padding: 3.5rem 1.25rem; }
+  .page-hero { padding: 110px 1.25rem 3rem; }
+  .divider { margin: 0 1.25rem; max-width: calc(100% - 2.5rem); }
+
+  /* Practice cards — full width */
   .practice-grid .practice-card { flex: 0 0 100%; }
+
+  /* Stats grid */
   .about-stats { grid-template-columns: 1fr 1fr; }
+
+  /* Stats strip — 2×2 */
+  .home-stats-strip { grid-template-columns: repeat(2, 1fr); }
+  .strip-stat { padding: 1.4rem 1rem; }
+  .strip-stat:nth-child(2n) { border-right: none; }
+  .strip-stat:nth-child(n+3) { border-top: 1px solid var(--border); }
+
+  /* Forms */
   .form-row { grid-template-columns: 1fr; }
+
+  /* Grids */
   .matter-grid { grid-template-columns: 1fr; }
   .process-steps { grid-template-columns: 1fr; }
-  .hero-actions, .cta-banner .btn-actions { flex-direction: column; align-items: center; }
+
+  /* CTA buttons */
+  .hero-actions,
+  .cta-banner .btn-actions,
+  .btn-actions { flex-direction: column; align-items: center; }
+
+  /* Touch-friendly buttons */
+  .btn-primary, .btn-outline {
+    padding: 15px 32px;
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    display: block;
+  }
+
+  /* Case items — stack badge below text */
+  .case-item { grid-template-columns: 1fr; gap: 0.75rem; }
+  .case-badge { align-self: flex-start; width: fit-content; }
+
+  /* Tabs — horizontal scroll */
+  .tab-list {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-list::-webkit-scrollbar { display: none; }
+
+  /* Tables — horizontal scroll */
+  .sc-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* Footer */
+  footer { padding: 2.5rem 1.25rem; gap: 1.5rem; }
+  .footer-links { flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+  /* Counsel card padding */
+  .counsel-card { padding: 1.5rem; }
+
+  /* Strip stat number size */
+  .strip-num { font-size: 1.9rem; }
+
+  /* Section heading size */
+  .section-heading { font-size: clamp(1.7rem, 7vw, 2.5rem); }
+
+  /* Page hero title */
+  .page-hero-title { font-size: clamp(2rem, 8vw, 3.2rem); }
+
+  /* Hero title */
+  .hero-title { font-size: clamp(2.8rem, 10vw, 4rem); }
 }
 
 /* ─── shadcn-Inspired Component Library ─── */
