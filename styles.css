@@ -327,6 +327,56 @@ nav.solid {
   pointer-events: none;
 }
 
+/* Decorative courthouse line-art — Practice Area heroes only.
+   Anchored bottom-right of .page-hero; sits behind hero content (z-index 1 < hero-left z-index 2). */
+/* Give only the Practice Area heroes (those carrying the courthouse) enough
+   vertical room for the large illustration to sit fully visible with its base
+   flush to the bottom edge — without affecting About/Contact/etc. heroes.
+   (The PNG is pre-cropped to its artwork bounds, so bottom:0/right:0 anchor
+   the steps and right edge exactly — no transparent padding.) */
+.page-hero:has(.page-hero__courthouse) {
+  min-height: clamp(440px, 38vw, 600px);
+}
+
+.page-hero__courthouse {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: clamp(440px, 44vw, 820px);
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: courthouseIn 1.3s var(--ease-out) 0.35s forwards;
+}
+
+@keyframes courthouseIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .page-hero:has(.page-hero__courthouse) { min-height: clamp(360px, 42vw, 440px); }
+  .page-hero__courthouse { width: clamp(300px, 44vw, 440px); }
+}
+
+@media (max-width: 768px) {
+  .page-hero:has(.page-hero__courthouse) { min-height: 0; }
+  .page-hero__courthouse {
+    width: 60%;
+    right: -6%;
+    bottom: 0;
+    animation: none;
+    opacity: 0.22;
+    transform: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero__courthouse { display: none; }
+}
+
 .breadcrumb {
   display: flex;
   align-items: center;
