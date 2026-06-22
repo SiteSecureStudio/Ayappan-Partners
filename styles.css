@@ -616,9 +616,9 @@ section, .page-section {
 
 .practice-card {
   flex: 0 0 calc(25% - 1.125px);
-  background: var(--white);
+  background: #4A1D14;
   padding: 2.5rem 2rem;
-  border: 1px solid rgba(200,147,53,0.15);
+  border: 1px solid rgba(200,147,53,0.22);
   position: relative;
   overflow: hidden;
   cursor: default;
@@ -639,18 +639,18 @@ section, .page-section {
   transition: transform 0.35s var(--ease-out);
 }
 
-.practice-card:hover { background: var(--surface); border-color: rgba(200,147,53,0.3); transform: translateY(-3px); }
+.practice-card:hover { background: #57241A; border-color: rgba(200,147,53,0.45); transform: translateY(-3px); }
 .practice-card:hover::after { transform: scaleX(1); }
 
 .practice-icon { width: 40px; height: 40px; margin-bottom: 1.5rem; opacity: 0.7; }
 
-.practice-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: #282214; margin-bottom: 0.8rem; letter-spacing: -0.01em; }
-.practice-card p { font-size: 0.85rem; color: #3A2C0A; line-height: 1.75; }
+.practice-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--steel); margin-bottom: 0.8rem; letter-spacing: -0.01em; }
+.practice-card p { font-size: 0.85rem; color: rgba(255,244,214,0.78); line-height: 1.75; }
 
 .practice-card ul { list-style: none; margin-top: 0.8rem; }
 
 .practice-card ul li {
-  font-size: 0.8rem; color: #4A3818;
+  font-size: 0.8rem; color: rgba(255,244,214,0.70);
   padding: 0.25rem 0; padding-left: 1rem;
   position: relative;
 }
