@@ -642,7 +642,7 @@ section, .page-section {
 .practice-card:hover { background: #B81217; border-color: rgba(200,147,53,0.45); transform: translateY(-3px); }
 .practice-card:hover::after { transform: scaleX(1); }
 
-.practice-icon { width: 40px; height: 40px; margin-bottom: 1.5rem; opacity: 0.7; }
+.practice-icon { width: 40px; height: 40px; margin-bottom: 1.5rem; opacity: 0.9; stroke: #fff; }
 
 .practice-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; color: var(--steel); margin-bottom: 0.8rem; letter-spacing: -0.01em; }
 .practice-card p { font-size: 0.85rem; color: rgba(255,244,214,0.78); line-height: 1.75; }
