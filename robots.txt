@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Development artefacts — not for indexing
+Disallow: /temporary%20screenshots/
+Disallow: /node_modules/
+
+Sitemap: https://ayappanpartners.my/sitemap.xml
