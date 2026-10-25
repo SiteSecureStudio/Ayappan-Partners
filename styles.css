@@ -17,6 +17,8 @@
   --sage:     #8E9E6A;
   --sage-light: #B8C99A;
   --accent:   #F2E48C;
+  --red:      #D6171D;
+  --red-deep: #9E1218;
 
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body:    'Lato', system-ui, sans-serif;
@@ -457,36 +459,47 @@ nav.solid {
 .btn-outline {
   display: inline-block;
   padding: 14px 36px;
-  border: 1px solid rgba(239,224,170,0.45);
-  color: var(--steel);
+  border: 1.5px solid var(--red-deep);
+  background: rgba(158,18,24,0.04);
+  color: var(--red-deep);
   font-family: var(--font-body);
   font-size: 0.75rem;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 2px;
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s var(--ease-spring);
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s var(--ease-spring);
 }
 
-.btn-outline:hover { border-color: var(--steel); color: var(--white); transform: translateY(-2px); }
+.btn-outline:hover {
+  background: var(--red-deep);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px -6px rgba(158,18,24,0.45), 0 2px 4px rgba(158,18,24,0.15);
+}
+.btn-outline:active { transform: translateY(0); background: #7E0E13; }
+.btn-outline:focus-visible { outline: 2px solid var(--red-deep); outline-offset: 3px; }
 
 .btn-secondary {
   display: inline-block;
   padding: 11px 28px;
-  border: 1px solid rgba(200,147,53,0.4);
-  color: var(--cyan);
+  border: 1.5px solid var(--red-deep);
+  background: rgba(158,18,24,0.04);
+  color: var(--red-deep);
   font-family: var(--font-body);
   font-size: 0.72rem;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 2px;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s var(--ease-spring);
 }
 
-.btn-secondary:hover { background: rgba(200,147,53,0.1); border-color: var(--cyan); }
+.btn-secondary:hover { background: var(--red-deep); color: var(--white); }
+.btn-secondary:active { background: #7E0E13; transform: translateY(1px); }
+.btn-secondary:focus-visible { outline: 2px solid var(--red-deep); outline-offset: 3px; }
 
 /* ─── Section Layout ─── */
 section, .page-section {
